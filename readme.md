@@ -15,6 +15,16 @@ The idea was to come up with something that could "just work" on both iOS and An
 * Easy to customise
 * Works on Android, iOS
 
+### Wishlist
+* more options for customisation, positioning (top / bottom)
+* ability to open lightweight sub-windows in Android, keep TabGroup visible
+* simulate left, right buttons and iOS style title bar in Android
+* replace iOS titlebar with custom version with support for left, right buttons
+* hide / show tabs dynamically, refresh
+* custom, oversized tab buttons e.g. middle button
+* click and hold - vertical (tweetbot style) sub tabs
+
+
 ## Quick Start
 * [Download the latest version](https://github.com/jasonkneen/com.jasonkneen.tabgroup) of the widget as a ZIP file.
 * Unzip the folder to your project under `app/widgets/com.jasonkneen.tabgroup`.
