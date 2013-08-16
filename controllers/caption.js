@@ -1,3 +1,5 @@
+var args = arguments[0] || {};
+
 var helpers = require(WPATH("helpers"));
 
 $.caption.applyProperties({
@@ -6,7 +8,7 @@ $.caption.applyProperties({
 	selectedColor : args.selectedColor || "#000"
 });
 
-var args = arguments[0] || {};
+
 
 var captionColor = $.caption.color;
 
