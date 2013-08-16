@@ -1,0 +1,6 @@
+<Alloy>
+    <View class="tab">        
+        <View id="wrapper"/>
+        <View id="clickZone"/>
+    </View>
+</Alloy>

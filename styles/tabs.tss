@@ -1,0 +1,8 @@
+"#tabGroup" : {	
+	bottom: 0,
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: "transparent",
+	layout: "horizontal"
+}
+

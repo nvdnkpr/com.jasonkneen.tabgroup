@@ -1,0 +1,12 @@
+"#icon" : {
+	top: 8,
+	width: 20,
+	height: 20
+	
+}
+
+"#icon[platform=android]" : {
+	top: 12,
+	width: 30,
+	height: 30,
+}
