@@ -50,6 +50,7 @@ The idea was to come up with something that could "just work" on both iOS and An
 ```js
 $.tabGroup.configure({
 	backgroundColor : "#000",
+	//backgroundImage : "PATH",
 
 	tabs : {
 		backgroundSelectedColor : "#666",
