@@ -87,6 +87,7 @@ function setInactive() {
 }
 
 function open(subWindow) {
+    
 	if (OS_IOS) {
 		args.win.__navGroup.open(subWindow);
 	} else {
@@ -96,11 +97,6 @@ function open(subWindow) {
 
 	}
 }
-
-
-$.getView().getController = function() {
-	return $;
-};
 
 exports.setInactive = setInactive;
 exports.setActive = setActive;
