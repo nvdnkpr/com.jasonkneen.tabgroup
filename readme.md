@@ -5,7 +5,7 @@ This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](htt
 ## Features
 * Easy to add to existing XML
 * Works with existing Window definitions
-* Easy to customomise
+* Easy to customise
 * Works on Android, iOS
 
 ## Quick Start
@@ -44,7 +44,7 @@ This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](htt
 * Configure the widget from the controller .js file
 
 ```js
-$.tabGroup.set({
+$.tabGroup.configure({
 	backgroundColor : "#000    ",
 
 	tabs : {
@@ -65,9 +65,6 @@ $.tabGroup.addTab({
 	icon : "/images/icons/grey/516-archive-box.png",
 	selectedIcon : "/images/icons/white/516-archive-box.png",
 	win : $.win1
-	//view : testView,
-	//	selectedView : testSelectedView,
-
 });
 
 $.tabGroup.addTab({
@@ -98,7 +95,15 @@ $.tabGroup.addTab({
 
 $.tabGroup.open();
 ```
+## Quick Start
 
+Methods:-
+
+* .configure(dictionary) - set's up properties for tabGroup, default tabs
+* .addTab(dictionary) - adds a new tab
+* .open() - opens the Tabgroup
+* .getActiveTab() - returns the current tab controller
+* .setActiveTab(n) - sets the tab to n (0 - tabcount)
 
 ## License
 
