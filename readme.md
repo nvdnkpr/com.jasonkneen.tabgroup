@@ -1,8 +1,10 @@
 # TabGroup for Alloy
 ## Overview
-This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework which provides an iOS + Android TabGroup with enchanced customisation options.
+This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework which provides an iOS + Android TabGroup with enhanced customisation options.
 
-THIS IS VERY MUCH WORK IN PROGRESS!
+The idea was to come up with something that could "just work" on both iOS and Android, and sit in the same position at the bottom of the screen for both, and wouldn't require too much integration changes.
+
+## NOTE: This is very much "work in progress" and I'm tweaking as I use this in current projects
 
 ## Features
 * Easy to add to existing XML
