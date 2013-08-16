@@ -188,7 +188,6 @@ function setActiveTab(t) {
 
 		}
 	}
-
 }
 
 exports.configure = configure;

@@ -1,16 +1,12 @@
 var args = arguments[0] || {};
 
-$.icon.applyProperties({
-	backgroundImage : args.icon,
-	backgroundSelectedImage : args.selectedIcon
-});
-
-var iconBackgroundImage = $.icon.backgroundImage;
+$.icon.backgroundImage = args.icon;
+$.icon.backgroundSelectedImage = args.selectedIcon;
 
 exports.setActive = function() {
 	$.icon.backgroundImage = $.icon.backgroundSelectedImage || $.icon.backgroundImage;
 };
 
 exports.setInactive = function() {
-	$.icon.backgroundImage = iconBackgroundImage;
+	$.icon.backgroundImage =  args.icon;
 };
