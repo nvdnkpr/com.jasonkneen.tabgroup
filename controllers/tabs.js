@@ -2,14 +2,10 @@ var rootWindow = arguments[0] || {};
 
 var helpers = require(WPATH("helpers"));
 
-var navGroup;
-var activeTab;
-var tabGroupWindow;
-var tabs = [];
+var navGroup, activeTab, tabGroupWindow, tabs = [];
 
 // defaults
 var settings = {
-	navHeight : OS_IOS ? 40 : 69,
 	tabHeight : OS_IOS ? 49 : 69,
 	tabsAtBottom : true,
 	tabGroup : {},
@@ -20,35 +16,26 @@ var settings = {
 function init() {
 
 	// hide the root window
-	rootWindow.hide();
+	// before opening it
+	rootWindow.visible = false;
 	rootWindow.open();
 
-	// configure rootwindow
-	configureWindow(rootWindow);
-
-	// create our tab window to hold the view
+	// create our tab window to hold the tabs
 	tabGroupWindow = Ti.UI.createWindow({
 		width : Ti.UI.FILL,
 		height : settings.tabHeight
-		//bottom : 0
 	});
 
+	// set top/bottom of root window
+	// and position of tabgroup
+
 	if (!settings.tabsAtBottom) {
+		rootWindow.top = settings.tabHeight;
 		tabGroupWindow.top = 0;
 	} else {
+		rootWindow.bottom = settings.tabHeight;
 		tabGroupWindow.bottom = 0;
 	}
-}
-
-function configureWindow(win) {
-
-	// position the top / bottom of the window
-	if (!settings.tabsAtBottom) {
-		win.top = settings.tabHeight;
-	} else {
-		win.bottom = settings.tabHeight;
-	}
-
 }
 
 function addTab(props) {
@@ -78,7 +65,12 @@ function addTab(props) {
 
 		tab.win = props.win;
 
-		configureWindow(tab.win);
+		if (!settings.tabsAtBottom) {
+			tab.win.top = settings.tabHeight;
+
+		} else {
+			tab.win.bottom = settings.tabHeight;
+		}
 
 		tab.win.visible = false;
 
