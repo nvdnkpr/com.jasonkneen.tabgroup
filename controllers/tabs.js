@@ -4,6 +4,7 @@ var helpers = require(WPATH("helpers"));
 
 var activeTab;
 var tabGroupWindow;
+var tabs = [];
 
 // defaults
 var settings = {
@@ -63,15 +64,15 @@ function configureWindow(win) {
 
 function addTab(props) {
 
-	// merge our defaults with the tab properties	
+	// merge our defaults with the tab properties
 	props = helpers.merge({
-	    
+
 		backgroundSelectedColor : props.backgroundSelectedColor || settings.tabs.backgroundSelectedColor,
 		font : props.font || settings.tabs.font,
 		selectedFont : props.selectedFont || settings.tabs.selectedFont,
 		selectedColor : props.selectedColor || settings.tabs.selectedColor,
 		color : props.color || settings.tabs.color
-		
+
 	}, props);
 
 	// create a new Tab instance
@@ -79,6 +80,9 @@ function addTab(props) {
 
 	// mark as active
 	activeTab = activeTab || tab;
+	
+	// add to tabs collection
+	tabs.push(tab);
 
 	// if we have a window, configure and open it
 	if (props.win) {
@@ -100,6 +104,7 @@ function addTab(props) {
 			tab.setActive();
 			activeTab.setInactive();
 			activeTab = tab;
+
 		}
 
 	});
@@ -109,7 +114,7 @@ function addTab(props) {
 }
 
 // used to set initial settings
-function set(args) {
+function configure(args) {
 
 	// copy over the tabs settings
 	settings.tabs = args.tabs || {};
@@ -141,10 +146,10 @@ function open() {
 
 function refresh() {
 
-    // cache values to speed things up
+	// cache values to speed things up
 	var deviceWidth = Ti.Platform.displayCaps.platformWidth;
-    var tabCount = $.tabGroup.children.length;
-
+	var tabCount = $.tabGroup.children.length;
+	
 	// iterate through the tabs and lay out
 	$.tabGroup.children.forEach(function(tab) {
 
@@ -154,13 +159,42 @@ function refresh() {
 			tab.width = deviceWidth / tabCount;
 		} else {
 			tab.width = (100 / tabCount) + "%";
-		}
+		}		
 
 	});
 }
 
+function getTabs() {
+	return tabs;
+}
+
+function getActiveTab() {
+	return activeTab;
+}
+
+function setActiveTab(t) {
+
+	if (!isNaN(t)) {
+		var tab = tabs[t];
+		
+		if (tab !== activeTab) {
+
+			tab.setActive();
+			activeTab.setInactive();
+			activeTab = tab;
+
+		}
+	}
+
+}
+
+exports.configure = configure;
 exports.init = init;
+
 exports.open = open;
-exports.addTab = addTab;
 exports.refresh = refresh;
-exports.set = set;
+exports.addTab = addTab;
+
+exports.getActiveTab = getActiveTab;
+exports.setActiveTab = setActiveTab;
+

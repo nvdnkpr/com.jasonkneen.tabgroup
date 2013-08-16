@@ -5,4 +5,6 @@ tabs.init();
 
 exports.addTab = tabs.addTab;
 exports.open = tabs.open;
-exports.set = tabs.set; 
+exports.configure = tabs.configure; 
+exports.getActiveTab = tabs.getActiveTab;
+exports.setActiveTab = tabs.setActiveTab;

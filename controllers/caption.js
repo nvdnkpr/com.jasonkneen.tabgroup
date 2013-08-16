@@ -8,8 +8,6 @@ $.caption.applyProperties({
 	selectedColor : args.selectedColor || "#000"
 });
 
-
-
 var captionColor = $.caption.color;
 
 if (args.font) {
