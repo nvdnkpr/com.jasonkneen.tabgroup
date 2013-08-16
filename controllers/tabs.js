@@ -2,6 +2,7 @@ var rootWindow = arguments[0] || {};
 
 var helpers = require(WPATH("helpers"));
 
+var navGroup;
 var activeTab;
 var tabGroupWindow;
 var tabs = [];
@@ -37,28 +38,24 @@ function configureWindow(win) {
 	// position the bottom of the window
 	win.bottom = settings.tabHeight;
 
-	if (win.children.length === 1) {
-		// if the window has one child control, adjust it
-		win.children[0].top = settings.navHeight;
-
-	} else {
-		// if not, wrap the controls in a child and adjust
-		var wrapper = Ti.UI.createView({
-			top : settings.navHeight
-		});
-
-		if (OS_IOS) {
-			// add the kids in one go
-			wrapper.add(win.children);
+	// position for nav
+	if (!OS_IOS) {
+		if (win.children.length === 1) {
+			// if the window has one child control, adjust it
+			win.children[0].top = settings.navHeight;
 
 		} else {
-			// above crashes Android so add them all individually
+			// if not, wrap the controls in a child and adjust
+			var wrapper = Ti.UI.createView({
+				top : settings.navHeight
+			});
+			
 			win.children.forEach(function(child) {
 				wrapper.add(child);
 			});
-		}
 
-		win.add(wrapper);
+			win.add(wrapper);
+		}
 	}
 }
 
@@ -80,7 +77,7 @@ function addTab(props) {
 
 	// mark as active
 	activeTab = activeTab || tab;
-	
+
 	// add to tabs collection
 	tabs.push(tab);
 
@@ -92,6 +89,19 @@ function addTab(props) {
 		configureWindow(tab.win);
 
 		tab.win.hide();
+
+		if (OS_IOS) {
+
+			navGroup = Ti.UI.iPhone.createNavigationGroup({
+				window : tab.win,
+				visible : false
+			});
+
+			rootWindow.add(navGroup);
+
+			tab.win.__navGroup = navGroup;
+		}
+
 		tab.win.open();
 
 	}
@@ -149,7 +159,7 @@ function refresh() {
 	// cache values to speed things up
 	var deviceWidth = Ti.Platform.displayCaps.platformWidth;
 	var tabCount = $.tabGroup.children.length;
-	
+
 	// iterate through the tabs and lay out
 	$.tabGroup.children.forEach(function(tab) {
 
@@ -159,7 +169,7 @@ function refresh() {
 			tab.width = deviceWidth / tabCount;
 		} else {
 			tab.width = (100 / tabCount) + "%";
-		}		
+		}
 
 	});
 }
@@ -176,7 +186,7 @@ function setActiveTab(t) {
 
 	if (!isNaN(t)) {
 		var tab = tabs[t];
-		
+
 		if (tab !== activeTab) {
 
 			tab.setActive();

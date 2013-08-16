@@ -52,6 +52,10 @@ function setActive() {
 
 		args.win.show();
 
+		if (args.win.__navGroup) {
+			args.win.__navGroup.show();
+		}
+
 	}
 }
 
@@ -75,6 +79,18 @@ function setInactive() {
 
 		args.win.hide();
 
+		if (args.win.__navGroup) {
+			args.win.__navGroup.hide();
+		}
+
+	}
+}
+
+function open(subWindow) {
+	if (OS_IOS) {
+		args.win.__navGroup.open(win);
+	} else {
+		win.open();
 	}
 }
 
@@ -85,3 +101,4 @@ $.getView().getController = function() {
 
 exports.setInactive = setInactive;
 exports.setActive = setActive;
+exports.open = open;
