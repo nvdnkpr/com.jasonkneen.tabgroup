@@ -41,11 +41,11 @@ This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](htt
 </Alloy>
 ```
 
-* Configure the widget from the controller .js file
+* Configure the widget from the controller .js file (current properties supported shown here)
 
 ```js
 $.tabGroup.configure({
-	backgroundColor : "#000    ",
+	backgroundColor : "#000",
 
 	tabs : {
 		backgroundSelectedColor : "#666",
@@ -64,7 +64,9 @@ $.tabGroup.addTab({
 	caption : "Downloads",
 	icon : "/images/icons/grey/516-archive-box.png",
 	selectedIcon : "/images/icons/white/516-archive-box.png",
-	win : $.win1
+	win : $.win1,
+	// view : custom Ti.UI.View
+	// selectedView : custom Ti.UI.View for selected state
 });
 
 $.tabGroup.addTab({
