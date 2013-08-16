@@ -170,7 +170,7 @@ function refresh() {
 		if (OS_IOS) {
 			tab.width = deviceWidth / tabCount;
 		} else {
-			tab.width = (100 / tabCount) + "%";
+			tab.width = (99 / tabCount) + "%";
 		}
 
 	});
