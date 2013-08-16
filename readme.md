@@ -8,6 +8,7 @@ The idea was to come up with something that could "just work" on both iOS and An
 
 ![TabGroup](https://raw.github.com/jasonkneen/images/master/tabGroup/ios.png)
 ![TabGroup](https://raw.github.com/jasonkneen/images/master/tabGroup/android.png)
+![TabGroup](https://raw.github.com/jasonkneen/images/master/tabGroup/android2.png)
 
 ## Features
 * Easy to add to existing XML
