@@ -2,19 +2,19 @@ var args = arguments[0] || {};
 
 var helpers = require(WPATH("helpers"));
 
-$.caption.text = args.caption || "None";
-$.caption.color = args.color || "#fff";
-$.caption.selectedColor = args.selectedColor || "#000";
+var defaultColor = "#fff";
+var defaultSelectedColor = "#000";
 
-var captionColor = $.caption.color;
+$.caption.text = args.caption;
+$.caption.color = args.color || defaultColor;
+$.caption.selectedColor = args.selectedColor || defaultSelectedColor;
 
 if (args.font) {
 	$.caption.font = helpers.merge(args.font, $.caption.font);
 }
 
 exports.setActive = function() {
-    
-	$.caption.color = $.caption.selectedColor || "#000";
+	$.caption.color = $.caption.selectedColor || defaultSelectedColor;
 
 	if (args.selectedFont) {
 		$.caption.font = helpers.merge(args.selectedFont, $.caption.font);
@@ -22,7 +22,7 @@ exports.setActive = function() {
 };
 
 exports.setInactive = function() {
-	$.caption.color = captionColor;
+	$.caption.color = args.color || defaultColor;
 
 	if (args.font) {
 		$.caption.font = helpers.merge(args.font, $.caption.font);
