@@ -104,12 +104,17 @@ $.tabGroup.open();
 Methods & Properties:-
 
 * .configure(dictionary) - set's up properties for tabGroup, default tabs
+
 * .addTab(dictionary) - adds a new tab
+
 * .open() - opens the Tabgroup
+
 * .getActiveTab() - returns the current tab controller
+
 * .setActiveTab(n) - sets the tab to n (0 - tabcount)
 
 * .activeTab - current active tab
+
 * .activeTab.open(win) - open a subwindow
 
 ## License
