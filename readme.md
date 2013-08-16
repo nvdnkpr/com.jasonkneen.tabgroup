@@ -17,7 +17,6 @@ The idea was to come up with something that could "just work" on both iOS and An
 * Works on Android, iOS
 
 ### Wishlist
-* more options for customisation, positioning (top / bottom)
 * ability to open lightweight sub-windows in Android, keep TabGroup visible
 * simulate left, right buttons and iOS style title bar in Android
 * replace iOS titlebar with custom version with support for left, right buttons
