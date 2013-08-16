@@ -49,7 +49,7 @@ function configureWindow(win) {
 			var wrapper = Ti.UI.createView({
 				top : settings.navHeight
 			});
-			
+
 			win.children.forEach(function(child) {
 				wrapper.add(child);
 			});
@@ -85,10 +85,10 @@ function addTab(props) {
 	if (props.win) {
 
 		tab.win = props.win;
-
+		
 		configureWindow(tab.win);
 
-		tab.win.hide();
+		tab.win.visible = false;
 
 		if (OS_IOS) {
 
@@ -103,6 +103,8 @@ function addTab(props) {
 		}
 
 		tab.win.open();
+
+		tab.win.hide();
 
 	}
 
@@ -200,11 +202,10 @@ function setActiveTab(t) {
 
 exports.configure = configure;
 exports.init = init;
-
 exports.open = open;
 exports.refresh = refresh;
 exports.addTab = addTab;
-
 exports.getActiveTab = getActiveTab;
 exports.setActiveTab = setActiveTab;
+
 
