@@ -41,7 +41,7 @@ function configureWindow(win) {
 		win.children[0].top = settings.navHeight;
 
 	} else {
-        // if not, wrap the controls in a child and adjust
+		// if not, wrap the controls in a child and adjust
 		var wrapper = Ti.UI.createView({
 			top : settings.navHeight
 		});
@@ -63,22 +63,24 @@ function configureWindow(win) {
 
 function addTab(props) {
 
-    // merge our defaults with the tab properties
+	// merge our defaults with the tab properties	
 	props = helpers.merge({
+	    
 		backgroundSelectedColor : props.backgroundSelectedColor || settings.tabs.backgroundSelectedColor,
 		font : props.font || settings.tabs.font,
 		selectedFont : props.selectedFont || settings.tabs.selectedFont,
 		selectedColor : props.selectedColor || settings.tabs.selectedColor,
 		color : props.color || settings.tabs.color
+		
 	}, props);
 
 	// create a new Tab instance
 	var tab = Widget.createWidget(Widget.widgetId, "tab", props);
 
-    // mark as active
+	// mark as active
 	activeTab = activeTab || tab;
 
-    // if we have a window, configure and open it
+	// if we have a window, configure and open it
 	if (props.win) {
 
 		tab.win = props.win;
@@ -90,7 +92,7 @@ function addTab(props) {
 
 	}
 
-    // user clicks this tab
+	// user clicks this tab
 	tab.on("tab:click", function() {
 
 		if (tab !== activeTab) {
@@ -139,15 +141,19 @@ function open() {
 
 function refresh() {
 
+    // cache values to speed things up
+	var deviceWidth = Ti.Platform.displayCaps.platformWidth;
+    var tabCount = $.tabGroup.children.length;
+
 	// iterate through the tabs and lay out
 	$.tabGroup.children.forEach(function(tab) {
 
 		// for some reason, issues with display caps on emulator so
 		// %ages used for Android, absolute division for iOS
 		if (OS_IOS) {
-			tab.width = Ti.Platform.displayCaps.platformWidth / $.tabGroup.children.length;
+			tab.width = deviceWidth / tabCount;
 		} else {
-			tab.width = (100 / $.tabGroup.children.length) + "%";
+			tab.width = (100 / tabCount) + "%";
 		}
 
 	});
