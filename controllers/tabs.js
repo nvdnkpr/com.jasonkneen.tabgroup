@@ -11,6 +11,7 @@ var tabs = [];
 var settings = {
 	navHeight : OS_IOS ? 40 : 69,
 	tabHeight : OS_IOS ? 49 : 69,
+	tabsAtBottom : true,
 	tabGroup : {},
 	tabs : {}
 };
@@ -28,35 +29,26 @@ function init() {
 	// create our tab window to hold the view
 	tabGroupWindow = Ti.UI.createWindow({
 		width : Ti.UI.FILL,
-		height : settings.tabHeight,
-		bottom : 0
+		height : settings.tabHeight
+		//bottom : 0
 	});
+
+	if (!settings.tabsAtBottom) {
+		tabGroupWindow.top = 0;
+	} else {
+		tabGroupWindow.bottom = 0;
+	}
 }
 
 function configureWindow(win) {
 
-	// position the bottom of the window
-	win.bottom = settings.tabHeight;
-
-	// position for nav
-	if (!OS_IOS) {
-		if (win.children.length === 1) {
-			// if the window has one child control, adjust it
-			win.children[0].top = settings.navHeight;
-
-		} else {
-			// if not, wrap the controls in a child and adjust
-			var wrapper = Ti.UI.createView({
-				top : settings.navHeight
-			});
-
-			win.children.forEach(function(child) {
-				wrapper.add(child);
-			});
-
-			win.add(wrapper);
-		}
+	// position the top / bottom of the window
+	if (!settings.tabsAtBottom) {
+		win.top = settings.tabHeight;
+	} else {
+		win.bottom = settings.tabHeight;
 	}
+
 }
 
 function addTab(props) {
@@ -85,7 +77,7 @@ function addTab(props) {
 	if (props.win) {
 
 		tab.win = props.win;
-		
+
 		configureWindow(tab.win);
 
 		tab.win.visible = false;
@@ -131,9 +123,16 @@ function configure(args) {
 	// copy over the tabs settings
 	settings.tabs = args.tabs || {};
 
+	if (!OS_IOS) {
+		settings.tabsAtBottom = args.tabsAtBottom;
+	}
+
+	init();
+
 	// set defaults for background color and images
 	tabGroupWindow.backgroundColor = args.backgroundColor || "#000";
 	tabGroupWindow.backgroundImage = args.backgroundImage || null;
+
 }
 
 function open() {
@@ -207,5 +206,4 @@ exports.refresh = refresh;
 exports.addTab = addTab;
 exports.getActiveTab = getActiveTab;
 exports.setActiveTab = setActiveTab;
-
 
