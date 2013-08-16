@@ -1,4 +1,4 @@
-// __parentSymbol is the host window - there be dragons!
+// __parentSymbol is the host window
 var tabs = Widget.createWidget(Widget.widgetId, "tabs", __parentSymbol);
 
 tabs.init();
