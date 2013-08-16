@@ -4,7 +4,7 @@ This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](htt
 
 The idea was to come up with something that could "just work" on both iOS and Android, and sit in the same position at the bottom of the screen for both, and wouldn't require too much integration changes.
 
-## NOTE: This is very much "work in progress" and I'm tweaking as I use this in current projects
+### NOTE: This is very much "work in progress" and I'm tweaking as I use this in current projects
 
 ## Features
 * Easy to add to existing XML
