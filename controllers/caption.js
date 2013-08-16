@@ -2,11 +2,9 @@ var args = arguments[0] || {};
 
 var helpers = require(WPATH("helpers"));
 
-$.caption.applyProperties({
-	text : args.caption || "None",
-	color : args.color || "#fff",
-	selectedColor : args.selectedColor || "#000"
-});
+$.caption.text = args.caption || "None";
+$.caption.color = args.color || "#fff";
+$.caption.selectedColor = args.selectedColor || "#000";
 
 var captionColor = $.caption.color;
 
@@ -15,6 +13,7 @@ if (args.font) {
 }
 
 exports.setActive = function() {
+    
 	$.caption.color = $.caption.selectedColor || "#000";
 
 	if (args.selectedFont) {
