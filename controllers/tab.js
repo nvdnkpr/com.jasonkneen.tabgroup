@@ -90,26 +90,10 @@ function open(subWindow) {
 	if (OS_IOS) {
 		args.win.__navGroup.open(subWindow);
 	} else {
-		
-		subWindow.left = Ti.Platform.displayCaps.platformWidth;
 
-		subWindow.addEventListener('android:back', back = function(e) {
-			subWindow.removeEventListener('android:back', back);
-
-			subWindow.animate({
-				left : Ti.Platform.displayCaps.platformWidth,
-				duration : 250
-			});
-
-			subWindow.close();
-		});
-
+		subWindow.modal = subWindow.modal || false;
 		subWindow.open();
 
-		subWindow.animate({
-			left : 0,
-			duration : 250
-		});
 	}
 }
 
