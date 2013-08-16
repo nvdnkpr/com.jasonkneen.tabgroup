@@ -2,6 +2,8 @@
 ## Overview
 This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework which provides an iOS + Android TabGroup with enchanced customisation options.
 
+THIS IS VERY MUCH WORK IN PROGRESS!
+
 ## Features
 * Easy to add to existing XML
 * Works with existing Window definitions
