@@ -14,7 +14,7 @@ var settings = {
 
 // initialise the tabGroup Window
 function init() {
-
+    console.log("init");
 	// hide the root window
 	// before opening it
 	rootWindow.visible = false;
@@ -29,11 +29,9 @@ function init() {
 	// set top/bottom of root window
 	// and position of tabgroup
 
-	if (!settings.tabsAtBottom) {
-		rootWindow.top = settings.tabHeight;
+	if (!settings.tabsAtBottom) {	    
 		tabGroupWindow.top = 0;
-	} else {
-		rootWindow.bottom = settings.tabHeight;
+	} else {		
 		tabGroupWindow.bottom = 0;
 	}
 }
@@ -120,6 +118,7 @@ function configure(args) {
 	}
 
 	init();
+
 
 	// set defaults for background color and images
 	tabGroupWindow.backgroundColor = args.backgroundColor || "#000";
