@@ -14,7 +14,7 @@ var settings = {
 
 // initialise the tabGroup Window
 function init() {
-    console.log("init");
+    
 	// hide the root window
 	// before opening it
 	rootWindow.visible = false;
