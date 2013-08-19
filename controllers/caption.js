@@ -2,8 +2,7 @@ var args = arguments[0] || {};
 
 var helpers = require(WPATH("helpers"));
 
-var defaultColor = "#fff";
-var defaultSelectedColor = "#000";
+var defaultColor = "#fff", defaultSelectedColor = "#000";
 
 $.caption.text = args.caption;
 $.caption.color = args.color || defaultColor;
