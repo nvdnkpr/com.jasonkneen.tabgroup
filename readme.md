@@ -133,6 +133,8 @@ Methods & Properties:-
 
 * .activeTab.open(win) - open a subwindow
 
+* .activeTab.close(win) - close a subwindow
+
 ## License
 
 <pre>
