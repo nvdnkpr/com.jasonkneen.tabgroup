@@ -87,7 +87,7 @@ function setInactive() {
 }
 
 function open(subWindow) {
-    
+
 	if (OS_IOS) {
 		args.win.__navGroup.open(subWindow);
 	} else {
@@ -98,6 +98,17 @@ function open(subWindow) {
 	}
 }
 
+function close(subWindow) {
+	if (OS_IOS) {
+		args.win.__navGroup.close(subWindow);
+	} else {
+
+		subWindow.close();
+
+	}
+}
+
 exports.setInactive = setInactive;
 exports.setActive = setActive;
 exports.open = open;
+exports.close = close;

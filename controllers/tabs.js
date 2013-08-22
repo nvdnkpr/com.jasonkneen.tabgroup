@@ -30,10 +30,10 @@ function init() {
 	// and position of tabgroup
 
 	if (!settings.tabsAtBottom) {
-		rootWindow.top = settings.tabHeight;
+		//rootWindow.top = settings.tabHeight;
 		tabGroupWindow.top = 0;
 	} else {
-		rootWindow.bottom = settings.tabHeight;
+		//rootWindow.bottom = settings.tabHeight;
 		tabGroupWindow.bottom = 0;
 	}
 }
@@ -84,6 +84,10 @@ function addTab(props) {
 			rootWindow.add(navGroup);
 
 			tab.win.__navGroup = navGroup;
+
+			tab.win.close = function() {
+				alert('here');
+			}
 		}
 
 		tab.win.open();
